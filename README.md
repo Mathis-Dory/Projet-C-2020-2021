@@ -5,7 +5,7 @@ Voici le repository de notre projet 2TL1 - Course de Formule 1
 Nous sommes 4 étudiants de la branche IT de l'Ephec
 
 * Dory Mathis
-*L epage Eliott
+* Lepage Eliott
 * Lits Maxime
 * Charlier François
 
