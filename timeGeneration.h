@@ -1,6 +1,3 @@
-//
-// Created by mathi on 08-10-20.
-//
 
 #ifndef PROJET_C_TIMEGENERATION_H
 #define PROJET_C_TIMEGENERATION_H
