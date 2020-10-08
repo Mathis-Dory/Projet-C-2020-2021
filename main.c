@@ -4,6 +4,7 @@
 
 
 int main(int argc, char *argv[]) {
-    getRandomTime();
+    getRandomTimeSector();
+    getRandomTimeStand();
     return 0;
 }
