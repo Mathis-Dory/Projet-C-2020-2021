@@ -1,4 +1,16 @@
-# Projet-C-2020-2021
+2TL1-Course de Formule 1
+Voici le repository de notre projet 2TL1 - Course de Formule 1
 
-Ce programme est écrit en C. Il a pour but de simuler une course entre un certains nombre de voitures. 
-Plusieurs types de courses différentes ont été implémentées, et un fichier de configuration texte permet de changer plusieurs paramètres de bases des courses.
+Présentation :
+Nous sommes 4 étudiants de la branche IT de l'Ephec
+
+Dory Mathis
+Lepage Eliott
+Lits Maxime
+Charlier François
+Description du projet:
+Nous allons créer une simulation de course de formule 1 en language C et appels systèmes Linux.
+
+FONCTIONNALITES PRINCIPALES :
+Afficher un tableau des temps pour les 20 voitures par secteur pour les différentes phases de la course ( essais, qualification).
+Gérer un temps au stand et les crashs.
