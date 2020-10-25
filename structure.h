@@ -4,8 +4,8 @@
 
 #endif //PROJET_C_STRUCTURE_H
 
-typedef VoitureF1 VoitureF1;
-struct VoitureF1{
+typedef struct VoitureF1 VoitureF1;
+struct VoitureF1 {
     int numeroVoiture;
     int secteur1;
     int secteur2;
