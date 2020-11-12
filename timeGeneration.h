@@ -1,7 +1,8 @@
+
 #ifndef PROJET_C_TIMEGENERATION_H
 #define PROJET_C_TIMEGENERATION_H
-#define MAX_TIME_DIZAINE  35
-#define MIN_TIME_DIZAINE  55
+#define MAX_TIME_DIZAINE 55
+#define MIN_TIME_DIZAINE  35
 #define MAX_TIME_CENTIEME  999
 #define MIN_TIME_CENTIEME  001
 #define MAX_TIME_STAND_DIZAINE 27
@@ -15,9 +16,9 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int getRandomTimeSector();
+double getRandomTimeSector();
 
-int getRandomTimeStand();
+double getRandomTimeStand();
 
 int carCrashed();
 
