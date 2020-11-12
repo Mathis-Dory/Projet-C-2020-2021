@@ -7,9 +7,9 @@
 typedef struct VoitureF1 VoitureF1;
 struct VoitureF1 {
     int numeroVoiture;
-    int secteur1;
-    int secteur2;
-    int secteur3;
+    double secteur1;
+    double secteur2;
+    double secteur3;
     int bestTime;
     int totalTime;
     int nbreTours;
