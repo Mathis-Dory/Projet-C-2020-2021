@@ -1,73 +1,69 @@
 
-#include "structure.h"
 #include "circuit.h"
 
-int tourEssai(){
-    VoitureF1 voiture;
-    initVoiture(&voiture);
-    double tmpsSecteur = 0;
-    int crash = 0;
-    int stand = 0;
-    int etatTour = 1;
-    if (etatTour == 1 && crash == 0){
-        tmpsSecteur = getRandomTimeSector();
-        crash = carCrashed();
-        voiture.secteur1 = tmpsSecteur;
-        if (crash == 1){
-            // Alors mettre la voiture en etat de crash et mettre son temps = à Abs pour le reste de la course
-            voiture.crashed = 0;
-            voiture.secteur2 = -1;
-            voiture.secteur3 = -1;
+
+
+double turn(CarF1* car){
+    double total = 0; // Temps pour un tour
+    double timeSector = 0; // Temps pour un secteur
+    int i = 1;
+    while (i <= 3) {
+        switch (i) {
+            case 1:
+                timeSector = sector();
+                break;
+            case 2:
+                timeSector = sector();
+                break;
+            case 3:
+                timeSector = sector();
+                break;
         }
-        etatTour ++;
-    }
-    if (etatTour == 2 && crash == 0){
-        tmpsSecteur = getRandomTimeSector();
-        crash = carCrashed();
-        voiture.secteur2 = tmpsSecteur;
-        if (crash == 1){
-            // Alors mettre la voiture en etat de crash et mettre son temps = à Abs pour le reste de la course
-            voiture.crashed = 0;
-            voiture.secteur3 = -1;
+        if(timeSector == 0){                 //test si il y a un crash
+            //sem_wait(sem);
+            car->status = 0;
+            car->crash = 1;
+            car->ranking = 1;
+            resetSector(car);
+            //sem_post(sem);
+            return 0;
         }
-        etatTour ++;
-    }
-    if (etatTour == 3 && crash == 0){
-        tmpsSecteur = getRandomTimeSector();
-        crash = carCrashed();
-        if (crash == 1){
-            voiture.crashed = 0;
+        if((i%2)==0){             //si il passe dans le secteur 2
+            //sem_wait(sem);
+            car->sector2 = timeSector;
+            //sem_post(sem);
         }
-        else{
-            stand = isInStand();
-            if (stand == 1){
-                // Alors mettre la voiture en stand et mettre a jour le temps S3
-                tmpsSecteur += getRandomTimeStand();
-                voiture.stand = 1;
-                voiture.secteur3 = tmpsSecteur;
+        else if((i%3)==0){        //si il passe dans le secteur 3
+            if(isInStand()){
+                timeSector += getRandomTimeStand();
+
+                //sem_wait(sem);
+                car->status=1;
+                //sem_post(sem);
+
+                //sleep(tempsStand/100);         // endormir le processus pendant s*10 milliseconde
 
             }
-            else{
-                tmpsSecteur = getRandomTimeSector();
-                voiture.secteur3 = tmpsSecteur;
-            }
-
+            //sem_wait(sem);
+            car->status=2;
+            car->sector3 = timeSector;
+            //sem_post(sem);
         }
+        else{                     //si il passe dans le secteur 1
+            //sem_wait(sem);
+            car->sector1 = timeSector;
+            //sem_post(sem);
+        }
+
+        total += timeSector; //ajout au temps total de la voiture dans le circuit
+        i ++;
     }
-    printf("Voici les temps : Secteur1: %3.3f Secteur2: %3.3f Secteur3: %3.3f \n", voiture.secteur1, voiture.secteur2, voiture.secteur3);
+    printf("%f", total);
+    return total;
 }
 
-void initVoiture(VoitureF1* voiture){
-    voiture->numeroVoiture = 1;
-    voiture->secteur1 = 0;
-    voiture->secteur2 = 0;
-    voiture->secteur3 = 0;
-    voiture->bestTime= 0;
-    voiture->totalTime = 0;
-    voiture->nbreTours = 0;
-    voiture->status = 0;
-    voiture->etat = 0;
-    voiture->crashed = 0;
-    voiture->stand = 0;
-
+void resetSector(CarF1* car){
+    car->sector1 = 0;
+    car->sector2 = 0;
+    car->sector3 = 0;
 }
