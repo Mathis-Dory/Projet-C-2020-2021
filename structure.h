@@ -2,19 +2,20 @@
 #ifndef PROJET_C_STRUCTURE_H
 #define PROJET_C_STRUCTURE_H
 
-#endif //PROJET_C_STRUCTURE_H
-
-typedef struct VoitureF1 VoitureF1;
-struct VoitureF1 {
-    int numeroVoiture;
-    double secteur1;
-    double secteur2;
-    double secteur3;
+typedef struct CarF1 CarF1;
+struct CarF1 {
+    int numberCar;
+    double sector1;
+    double sector2;
+    double sector3;
     int bestTime;
     int totalTime;
-    int nbreTours;
+    int nbreTurns;
     int status;
-    int etat;
-    int crashed;
+    int ranking;
+    int crash;
     int stand;
 };
+
+#endif //PROJET_C_STRUCTURE_H
+
