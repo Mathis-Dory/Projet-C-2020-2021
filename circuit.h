@@ -1,12 +1,11 @@
-//
-// Created by mathi on 22-10-20.
-//
 
 #ifndef MAIN_C_CIRCUIT_H
 #define MAIN_C_CIRCUIT_H
 #include "timeGeneration.h"
+#include "structure.h"
+#include "secteur.h"
 
-int tourEssai();
-void initVoiture();
+double turn();
+void resetSector();
 
 #endif //MAIN_C_CIRCUIT_H
