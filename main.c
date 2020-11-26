@@ -3,8 +3,8 @@
 #include "main.h"
 
 
-
 int main(int argc, char *argv[]) {
-        turn();
+    CarF1 car1;
+    turn(&car1);
     return 0;
 }
