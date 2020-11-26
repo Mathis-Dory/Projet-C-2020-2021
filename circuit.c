@@ -30,11 +30,12 @@ double turn(CarF1 *car) {
 
         }
         else if ((i % 3) == 0) {        //si il passe dans le secteur 3
-            if (isInStand()) {
-                timeSector += getRandomTimeStand();
-                car->status = 1;
+           // Pas de stand en essai
+            // if (isInStand()) {
+            //    timeSector += getRandomTimeStand();
+            //    car->status = 1;
 
-            }
+           // }
             car->status = 2;
             car->sector3 = timeSector;
 
@@ -46,6 +47,16 @@ double turn(CarF1 *car) {
     }
     printf("%f", total);
     return total;
+}
+
+void qualification(int chrono){
+    double timeThisTurn = 0;
+    double timeInRace = 0;
+    while (timeInRace < chrono && timeThisTurn != 0){
+        
+    }
+
+
 }
 
 void resetSector(CarF1 *car) {
