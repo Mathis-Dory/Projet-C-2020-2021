@@ -2,8 +2,8 @@
 #ifndef PROJET_C_STRUCTURE_H
 #define PROJET_C_STRUCTURE_H
 
-typedef struct CarF1 CarF1;
-struct CarF1 {
+
+typedef struct {
     int numberCar;
     double sector1;
     double sector2;
@@ -15,7 +15,7 @@ struct CarF1 {
     int ranking;
     int crash;
     int stand;
-};
+}CarF1;
 
 #endif //PROJET_C_STRUCTURE_H
 
