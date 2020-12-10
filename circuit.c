@@ -9,12 +9,15 @@ double turn(CarF1 *car) {
         switch (i) {
             case 1:
                 timeSector = sector();
+                printf("S1 : %f \n", timeSector);
                 break;
             case 2:
                 timeSector = sector();
+                printf("S2 : %f \n", timeSector);
                 break;
             case 3:
                 timeSector = sector();
+                printf("S3 : %f \n", timeSector);
                 break;
         }
         if (timeSector == 0) {                 //test si il y a un crash
@@ -45,18 +48,28 @@ double turn(CarF1 *car) {
 
         total += timeSector; //ajout au temps total de la voiture dans le circuit
     }
-    printf("%f", total);
     return total;
 }
 
-void qualification(int chrono){
+void qualification(int chrono, CarF1 *car){
     double timeThisTurn = 0;
     double timeInRace = 0;
-    while (timeInRace < chrono && timeThisTurn != 0){
-        
+    while (timeInRace < chrono){
+        timeThisTurn = turn(car);
+        timeInRace += timeThisTurn;
+        if (timeThisTurn == 0){
+            car->status = -1;
+            return;
+        }
+        car->nbreTurns += 1;
+        if (car->bestTime > timeThisTurn || car->bestTime == 0) {
+            car->bestTime = timeThisTurn;        //sauvegarde la valeur en memoire partagee
+            if (car->updateRanking == 0) {
+                car->updateRanking = 1;          //indique que le temps de la voiture a changeOrdre
+            }
+        }
+        printf("Temps : %f \n", timeThisTurn);
     }
-
-
 }
 
 void resetSector(CarF1 *car) {
