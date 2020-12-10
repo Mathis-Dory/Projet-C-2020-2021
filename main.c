@@ -5,6 +5,6 @@
 
 int main(int argc, char *argv[]) {
     CarF1 car1;
-    turn(&car1);
+    qualification(CHRONO_Q2 ,&car1);
     return 0;
 }
