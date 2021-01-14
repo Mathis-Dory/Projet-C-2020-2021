@@ -7,6 +7,7 @@
  * @return total
  */
 double turn(CarF1 *car) {
+    resetSector();
     double total = 0; // Temps pour un tour complet
     double timeSector = 0; // Temps pour un secteur
     for (int i = 1; i <= 3; ++i) {
@@ -55,7 +56,6 @@ double turn(CarF1 *car) {
                 car->bestSector1 = car->sector1;
             }
         }
-
         total += timeSector; //ajout au temps total de la voiture dans le circuit
     }
     return total;
@@ -87,6 +87,8 @@ void qualification(int chrono, CarF1 *car, int *listOfNumbers) {
     if (car->updateRanking == 0) {
         car->updateRanking = 1;          //indique que le temps de la voiture a changeOrdre
     }
+    car->totalTime = timeInRace;
+    sleep(1);
 }
 
 /**Simule un tour pour la course principale
@@ -154,7 +156,6 @@ double turnForRace(CarF1 *car, int numberOfTurns, int maxTurns) {
                 car->bestSector1 = car->sector1;
             }
         }
-
         total += timeSector; //ajout au temps total de la voiture dans le circuit
     }
     return total;
@@ -187,6 +188,7 @@ void race(int numberOfTurns, CarF1 *car, int *listOfNumbers) {
     if (car->updateRanking == 0) {
         car->updateRanking = 1;          //indique que le temps de la voiture a changeOrdre
     }
+    car->totalTime = timeInRace;
 }
 
 void resetSector(CarF1 *car) {

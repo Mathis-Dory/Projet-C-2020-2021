@@ -5,6 +5,7 @@
 #include "structure.h"
 #include "secteur.h"
 #include <limits.h>
+#include <unistd.h>
 
 double turn(CarF1 *car);
 void qualification(int chrono, CarF1 *car, int *listOfNumbers);

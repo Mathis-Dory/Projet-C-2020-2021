@@ -5,22 +5,19 @@ ConfigRace config;
 CarF1 copyCar[NB_CARS];
 
 void displayResult(CarF1 *data, sem_t *semaphore){
-    while(1){
         sem_wait(semaphore);
-        memcpy(copyCar, data, sizeof(CarF1) * config.nbreOfCars);
-        sem_post(semaphore);
-
-        //Si la dernière voiture de la course a fini, on arrète le programme
-        if (copyCar[config.nbreOfCars-1].updateRanking){
-            break;
+        for (int i=0; i<NB_CARS;i++) {
+            copyCar[i] = data[i];
         }
-        printf("|\tPos.\t|%10s\t|%10s\t|%10s\t|%10s\t|%10s\t|%10s\t|\t%s\t|\t%s\t|\n\n", "No", "S1", "S2", "S3", "TempsTour", "Tour", "P", "O");
+        sem_post(semaphore);
+        qsort(copyCar, config.nbreOfCars, sizeof(CarF1), sortCars);
+        //Si la dernière voiture de la course a fini, on arrète le programme
+
+        printf("|\tPos.\t|%10s\t|%10s\t|%10s\t|%10s\t|%10s\t|%10s\t|\t%s\t|\t%s\t|\n\n", "Numero", "Secteur 1", "Secteur 2", "Secteur 3", "Temps en course", "Nombre de Tours", "P", "O");
 
         for(int i=0; i<config.nbreOfCars; i++){
-            CarF1 pilote = copyCar[i];
-
-            printf("|\t%d\t|%10d\t|%10.3f\t|%10.3f\t|%10.3f\t|%10.3f\t|\t%d\t|\t%d\t|\t|\n",
-                   i+1, pilote.numberCar, pilote.sector1, pilote.sector2, pilote.sector3, pilote.totalTime, pilote.nbreTurns, pilote.status);
+            printf("|\t%d\t|%10d\t|%10.3f\t|%10.3f\t|%10.3f\t|%10.3f\t|\t%d\t|\t%d\t|\t%d  |\n",
+                   i+1, copyCar[i].numberCar, copyCar[i].sector1, copyCar[i].sector2, copyCar[i].sector3, copyCar[i].totalTime, copyCar[i].nbreTurns, copyCar[i].stand, copyCar[i].crash);
 
         }
 
@@ -31,7 +28,6 @@ void displayResult(CarF1 *data, sem_t *semaphore){
 
         sleep(1); //sleep pour chaque refresh de la grille
         system("clear");
-    }
     sleep(3); //Sleep pour fin de course afin de voir le tableau finale
 
 }

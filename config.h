@@ -15,6 +15,4 @@
 #define MIN_TEMPS_CENTIEME  001 // Centième min pour un secteur & stand
 #define MAX_TEMPS_STAND_DIZAINE 27 // Temps max au stand
 #define MIN_TEMPS_STAND_DIZAINE 23 // Temps min au stand
-#define CHANCE_DE_CRASH 3 // chance en % d'avoir un crash
-#define CHANCE_DE_STAND 15 // chance en % d'aller au stand lors d'un tour
 #endif //PROJET_C_FINAL_CONFIG_H
