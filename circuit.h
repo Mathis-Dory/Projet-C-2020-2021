@@ -1,19 +1,15 @@
 
-
-#ifndef MAIN_C_CIRCUIT_H
-#define MAIN_C_CIRCUIT_H
-#define CHRONO_E1 5400
-#define CHRONO_E2 400
-#define CHRONO_E3 3600
-#define CHRONO_Q1 1080
-#define CHRONO_Q2 900
-#define CHRONO_Q3 720
+#ifndef PROJET_C_FINAL_CIRCUIT_H
+#define PROJET_C_FINAL_CIRCUIT_H
 #include "timeGeneration.h"
 #include "structure.h"
 #include "secteur.h"
+#include <limits.h>
 
 double turn(CarF1 *car);
-void qualification(int chrono, CarF1 *car);
+void qualification(int chrono, CarF1 *car, int *listOfNumbers);
 void resetSector();
-
-#endif //MAIN_C_CIRCUIT_H
+double turnForRace(CarF1 *car, int numberOfTurns, int maxTurns);
+void race(int numberOfTurns, CarF1 *car, int *listOfNumbers);
+void initCar(CarF1 *car);
+#endif //PROJET_C_FINAL_CIRCUIT_H

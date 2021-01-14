@@ -87,7 +87,6 @@ void qualification(int chrono, CarF1 *car, int *listOfNumbers) {
     if (car->updateRanking == 0) {
         car->updateRanking = 1;          //indique que le temps de la voiture a changeOrdre
     }
-    sleep(1);
 }
 
 /**Simule un tour pour la course principale
