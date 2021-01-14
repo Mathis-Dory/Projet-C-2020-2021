@@ -1,5 +1,6 @@
 # 2TL1-Course de Formule 1
 Voici le repository de notre projet 2TL1 - Course de Formule 1
+Programme inachevé.
 
 # Présentation :
 Nous sommes 4 étudiants de la branche IT de l'Ephec
